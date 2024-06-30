@@ -13,6 +13,7 @@
 - Using data collected from [Scott Free LLC](https://www.scottfreellc.com/shop/p/historical-odds-sample-data) to start.
 - Will likely need to scrape our own Odds data to keep this updated weekly.
   - Give ESPN a shot. Might be able to get this info from the Caesars API similar to the NFL odds.
+    - [This looks promising](https://www.espn.com/college-football/odds)
 - Could be interesting to add team stats into the picture as well
 
 ## Model Feature Ideas
