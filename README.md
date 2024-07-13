@@ -3,10 +3,17 @@
 ## Table of Contents
 
 - [Introduction](#introduction)
+- [Files](#files)
 - [Data Used](#data-used)
 - [Model Feature Ideas](#model-feature-ideas)
 
 ## Introduction
+
+## Files
+
+- ![NCAA Stats Crawling](ncaa_stats_crawler.ipynb) -
+- ![NCAA Odds Crawling](ncaa_odds_crawler.ipynb) -
+- ![Team Name Normilization](team_normalization.ipynb) - Needed this to take the historical odds file and match these teams up with the team names from ESPN data in order to combine this data. The goal here will be to assign a game id to reach record in the odds dataset.
 
 ## Data Used
 
