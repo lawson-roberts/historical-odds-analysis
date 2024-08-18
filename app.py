@@ -14,7 +14,8 @@ from datetime import datetime
 import datetime
 
 ## api and model packages
-from sklearn.linear_model import LogisticRegression
+# from sklearn.linear_model import LogisticRegression
+import sklearn
 import requests
 import pickle
 import io
