@@ -3,10 +3,8 @@ import pandas as pd
 import numpy as np
 import base64
 import csv
-import plotly.express as px
 from PIL import Image
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
+
 ## web crawling packages
 from pandas import json_normalize
 import json
@@ -17,27 +15,13 @@ import datetime
 
 import requests
 import pickle
-import joblib
 import io
 
 ##Setting Streamlit Settings
 # st.set_page_config(layout="wide")
 
-## loading historical games
-#historical = pd.read_csv('data/nfl_historical_clean.csv')
-#historical = historical.drop(columns='Unnamed: 0')
-#historical['year'] = historical['url'].str[-17:-13]
-#historical['year'] = historical['year'].astype(int)
-#today = date.today()
-#year = today.year
-#historical = historical[historical['year'] == year]
-
-# historical = pd.read_csv('data/agg_team_stats.csv')
-# historical = historical.drop(columns='Unnamed: 0')
-
 # load models from disk
-# ml_model_obj = pickle.load(open('models/money_line_log_reg_model.pkl', 'rb'))
-ml_model_obj = joblib.load('models/money_line_log_reg_model.pkl')
+ml_model_obj = pickle.load(open('models/money_line_log_reg_model.pkl', 'rb'))
 home_spread_model_obj = pickle.load(open('models/home_spread_log_reg_model.pkl', 'rb'))
 away_spread_model_obj = pickle.load(open('models/away_spread_log_reg_model.pkl', 'rb'))
 
@@ -78,7 +62,6 @@ def get_current_games():
     payload={}
     headers = {
     'Accept': 'application/json',
-    # 'Cookie': 'SWID=3750444F-BA06-4929-C99C-62333D7EE8A0'
     }
 
     response = requests.request("GET", url, headers=headers, data=payload)
