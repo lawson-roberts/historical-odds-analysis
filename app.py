@@ -130,7 +130,7 @@ probabilities_home_spread = pd.DataFrame(home_spread_model_obj.predict_proba(mod
 # probabilities_home_spread = probabilities_home_spread.rename(columns = {'away': away, 'home': home})
 # prediction_value_home_spread = prediction_home_spread[0]
 
-model_predictions = pd.concat([model_ready_logo, probabilities_ml, probabilities_home_spread, probabilities_away_spread], axis=1)
+model_predictions = pd.concat([model_ready_logo, probabilities_ml, probabilities_home_spread], axis=1)
 
 st.write("""
         ### Additional Game and Prediction Details if you would like to take a look this way
