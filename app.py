@@ -24,7 +24,6 @@ import io
 # load models from disk
 ml_model_obj = pickle.load(open('models/money_line_log_reg_model.pkl', 'rb'))
 home_spread_model_obj = pickle.load(open('models/home_spread_log_reg_model.pkl', 'rb'))
-away_spread_model_obj = pickle.load(open('models/away_spread_log_reg_model.pkl', 'rb'))
 
 ## can add this back later once the season starts
 # ## loading predictions file to show accuracy
@@ -131,12 +130,6 @@ probabilities_home_spread = pd.DataFrame(home_spread_model_obj.predict_proba(mod
 # probabilities_home_spread = probabilities_home_spread.rename(columns = {'away': away, 'home': home})
 # prediction_value_home_spread = prediction_home_spread[0]
 
-## away spread pred
-prediction_away_spread = away_spread_model_obj.predict(model_ready_for_predition)
-probabilities_away_spread = pd.DataFrame(away_spread_model_obj.predict_proba(model_ready_for_predition), columns=['away_spread_away', 'home_spread_away'])
-# probabilities_away_spread = probabilities_away_spread.rename(columns = {'away': away, 'home': home})
-# prediction_value_away_spread = prediction_away_spread[0]
-
 model_predictions = pd.concat([model_ready_logo, probabilities_ml, probabilities_home_spread, probabilities_away_spread], axis=1)
 
 st.write("""
@@ -177,7 +170,6 @@ for ind in model_predictions.index:
 
         ## if we were to show both models...
         st.write("Model Predicts...", round(model_predictions['home_spread_home'][ind]*100, 2), "% chance of home team covering the above spread")
-        st.write("Model Predicts...", round(model_predictions['away_spread_home'][ind]*100, 2), "% chance of away team covering the above spread")
         st.write("-------------------------")
 
     with col2:
@@ -191,6 +183,5 @@ for ind in model_predictions.index:
         ## if we just started with using the model to predict the away spread...but sometimes they are different
 
         ## if we were to show both models...
-        st.write("Model Predicts...", round(model_predictions['away_spread_away'][ind]*100, 2), "% chance of away team covering the above spread")
-        st.write("Model Predicts...", round(model_predictions['home_spread_away'][ind]*100, 2), "% chance of home team covering the above spread")
+        st.write("Model Predicts...", round(model_predictions['away_spread_home'][ind]*100, 2), "% chance of away team covering the above spread")
         st.write("-------------------------")
