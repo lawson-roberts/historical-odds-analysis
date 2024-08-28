@@ -94,6 +94,13 @@ model_ready = game_df[['id', 'name', 'odds.pointSpread.away.close.line', 'odds.a
                         , 'odds.pointSpread.home.close.line', 'odds.homeTeamOdds.spreadOdds', 'odds.homeTeamOdds.moneyLine' 
                         , 'odds.total.over.close.line', 'odds.total.over.close.odds', 'odds.total.under.close.odds']]
 
+model_ready['odds.total.over.close.odds'] = np.where(model_ready['odds.total.over.close.odds'] == 'EVEN', 100, model_ready['odds.total.over.close.odds'])
+model_ready['odds.total.under.close.odds'] = np.where(model_ready['odds.total.under.close.odds'] == 'EVEN', 100, model_ready['odds.total.under.close.odds'])
+model_ready['odds.awayTeamOdds.moneyLine'] = np.where(model_ready['odds.awayTeamOdds.moneyLine'] == 'OFF', 0, model_ready['odds.awayTeamOdds.moneyLine'])
+model_ready['odds.homeTeamOdds.moneyLine'] = np.where(model_ready['odds.homeTeamOdds.moneyLine'] == 'OFF', 0, model_ready['odds.homeTeamOdds.moneyLine'])
+
+# st.write(model_ready.astype('object'))
+
 model_ready.rename(columns={'odds.awayTeamOdds.moneyLine': 'away_money_line'
                             , 'odds.awayTeamOdds.spreadOdds': 'away_point_spread_line'
                             , 'odds.homeTeamOdds.moneyLine': 'home_money_line'
